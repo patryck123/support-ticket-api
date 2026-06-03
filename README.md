@@ -1,21 +1,34 @@
-# Support Ticket API
+# 🎫 Support Ticket API
 
-Sistema de chamados de suporte técnico com número automático, atribuição de agentes, histórico de comentários, prioridades e fluxo completo de status.
+Sistema de chamados de suporte com número TKT, prioridades, SLA e comentários.
 
-## Tecnologias
-Java 17 · Spring Boot 3.2 · Spring Data JPA · PostgreSQL · Maven · Swagger/OpenAPI
+## 📋 Sobre o Projeto
 
-## Funcionalidades
-- Abertura de chamados com geração automática de número (TKT-XXXXXXXX)
-- Categorias: BUG, FEATURE_REQUEST, BILLING, TECHNICAL_SUPPORT
-- Prioridades: LOW, MEDIUM, HIGH, CRITICAL
-- Fluxo: OPEN → IN_PROGRESS → RESOLVED → CLOSED
-- Atribuição de chamado para agente e registro de comentários internos
-- Filtros por status, prioridade, solicitante e agente responsável
+API para equipes de suporte técnico gerenciarem chamados de clientes. Cada chamado recebe um número único no formato `TKT-0001`, tem prioridade e status. A equipe pode adicionar comentários internos e rastrear o histórico de atualizações.
 
-## Como Executar
-```bash
-mvn spring-boot:run
-# Acesse: http://localhost:8103/swagger-ui.html
-```
-**Patryck Martins Langsdorff** — Java Back End Developer Junior | [LinkedIn](https://www.linkedin.com/in/patryck-martins-langsdorff)
+## ✨ Funcionalidades
+
+- ✅ Abrir chamado com título e descrição
+- ✅ Número automático no formato TKT-XXXX
+- ✅ Prioridade: LOW, MEDIUM, HIGH, CRITICAL
+- ✅ Status: OPEN → IN_PROGRESS → RESOLVED → CLOSED
+- ✅ Categoria: BUG, FEATURE_REQUEST, SUPPORT, BILLING
+- ✅ Comentários internos da equipe
+- ✅ Histórico de mudanças de status
+- ✅ Filtrar por prioridade, status ou categoria
+- ✅ Listagem de chamados abertos
+
+## 🔗 Endpoints
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET/POST | `/api/tickets` | Listar / Abrir chamado |
+| GET | `/api/tickets/{id}` | Detalhes do chamado |
+| PATCH | `/api/tickets/{id}/status` | Atualizar status |
+| POST | `/api/tickets/{id}/comments` | Adicionar comentário |
+| GET | `/api/tickets?priority=HIGH` | Filtrar por prioridade |
+| GET | `/api/tickets/open` | Chamados em aberto |
+
+## 🛠️ Tecnologias
+
+- Java 17 · Spring Boot 3.2 · PostgreSQL · Maven · Lombok
